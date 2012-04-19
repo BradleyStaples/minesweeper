@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Minesweeper</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link type="text/css" rel="stylesheet" href="css/minesweeper.css" />
+<link href='http://fonts.googleapis.com/css?family=Arapey' rel='stylesheet' type='text/css' />
+</head>
+<body>
+	<div class="wrapper clearfix">
+		<h1 class="center">Minesweeper</h1>
+		<nav class="bar">
+			<button class="button start"><span class="sprite new"></span> New Game</button>
+			<button class="button save"><span class="sprite saver"></span> Save Game</button>
+			<button class="button load"><span class="sprite loader"></span> Load Game</button>
+			<button class="button cheat"><span class="sprite cheater"></span> Cheat</button>
+			<button class="button help"><span class="sprite helper"></span> Help</button>
+			<button class="button validate"><span class="sprite smiley"></span> Validate</button>
+		</nav>
+		<table class="grid"></table>
+		<div class="stats">
+			<div class="sprite mouse">
+				<span class="clicks">0</span>
+			</div><!-- .sprite .mouse -->
+			<div class="sprite clock">
+				<span class="time">0</span>
+			</div><!-- .sprite .clock -->
+			<div class="sprite bomb">
+				<span class="mines">0</span>
+			</div><!-- .sprite .clock -->
+		</div><!-- .stats -->
+		<br /><hr />
+		<p class="center"><br />Created by<br /><a class="credit" href="http://bradleystap.es" title="The Ginger Boy">Bradley Staples</a></p>
+	</div><!-- .wrapper -->
+	<div class="overlay">
+		<div class="modal"></div>
+	</div><!-- .overlay -->
+	<script id="modal-start" type="custom/template">
+		<h2><strong>NEW GAME</strong></h2>
+		<p>Choose a game size and the number of mines you want in your grid, and then enjoy!</p><br />
+		<label>Game Size:</label>
+		<select class="gamesize">
+			<option value="1">8x8</option>
+			<option value="2">16x16</option>
+			<option value="4">32x32</option>
+		</select><br />
+		<label># of Mines:</label>
+		<input type="number" class="minenumber" value="8" /><br />
+		<button class="button modal-close">Cancel</button>
+		<button class="button modal-continue">Continue</button>
+	</script>
+	<script id="modal-help" type="custom/template">
+		<h2><strong>HELP</strong></h2>
+		<p><strong>Click</strong> a cell to uncover it. <strong>Shift-click</strong> a cell to flag that cell a holding a mine. <strong>Shift-click</strong> again on
+		a cell with a flag to clear the flag.</p>
+		<p>Uncovered cells that are empty indicate that no adjacent cells have mines. Uncovered cells with numbers inside of them indicate how
+		many adjacement cells have mines. Uncover all cells without uncovering any cells that have mines to win. You can also win by flagging all cells that contain mines.</p>
+		<p>If you think you have only mined cells left (or if you think you have all mined cells flagged), you can validate your result without needing
+		to flag/uncover the remaining cells.</p>
+		<p>You can cheat to reveal which cells have mines.</p>
+		<button class="button modal-close">Close Help</button>
+	</script>
+	<script id="modal-confirm" type="custom/template">
+		<h2><strong>Are you sure?</strong></h2>
+		<p>{{message}}</p>
+		<button class="button modal-close">Cancel</button>
+		<button class="button modal-continue">Continue</button>
+	</script>
+	<script id="modal-notice" type="custom/template">
+		<h2><strong>{{title}}</strong></h2>
+		<p>{{message}}</p>
+		<button class="button modal-close">Close</button>
+	</script>
+	<script id="grid-td" type="custom/template">
+		<td data-row="{{row}}" data-col="{{col}}" class="{{class}}"></td>
+	</script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script src="js/minesweeper.js"></script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+@charset "utf-8"; 
+
+/* - - - - - BASE STRUCTURE - - - - - */
+* {margin:0; padding:0; outline:none;}
+html,body {width:100%; height:100%; margin:0 auto; postion:relative;}
+body {font:20px/30px "Arapey",serif; color:#fff; text-align:center;}
+.wrapper {
+	min-height:100%;
+	padding-bottom:15px;
+	background-color:#66b6fc;
+	background-color:-moz-linear-gradient(-45deg,#66b6fc 65%,#b2e1ff 98%);
+	background-color:-webkit-gradient(linear,left top,right bottom,color-stop(65%,#66b6fc),color-stop(98%,#b2e1ff));
+	background-color:-webkit-linear-gradient(-45deg,#66b6fc 65%,#b2e1ff 98%);
+	background-color:-o-linear-gradient(-45deg,#66b6fc 65%,#b2e1ff 98%);
+	background-color:-ms-linear-gradient(-45deg,#66b6fc 65%,#b2e1ff 98%);
+	background-color:linear-gradient(-45deg,#66b6fc 65%,#b2e1ff 98%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#66b6fc',endColorstr='#b2e1ff',GradientType=1);
+}
+
+/* - - - - - BASE TAGS AND CLASSES - - - - - */
+h1 {font:40px/50px "Arapey",sans-serif; text-shadow:0 3px 3px #000;}
+h2 {font:30px/40px "Arapey",sans-serif; text-shadow:0 1px 1px #000; text-align:center;}
+.desc {width:820px; text-align:center; margin:10px auto; line-height:25px;}
+hr {width:820px; height:0; margin:0 auto; border-top:1px solid #eee; border-bottom:1px solid #888;}
+a,a:link {text-decoration:none; color:#222; font-weight:bold;}
+a:hover {color:#333; text-decoration:underline;}
+a.credit {padding:8px 3px; -webkit-transition:all 1s ease-in-out; -moz-transition:all 1s ease-in-out; -o-transition:all 1s ease-in-out; transition:all 1s ease-in-out;}
+a.credit:hover {background-color:#fff; -webkit-border-radius:20px; -moz-border-radius:20px; border-radius:20px; text-decoration:none;}
+a img {border:none;}
+.clearfix:before,.clearfix:after {content:""; display:table;}
+.clearfix:after {clear:both;}
+.clearfix {*zoom:1;}
+
+/* - - - - - NAVIATION AND BUTTONS - - - - - */
+.bar {width:750px; margin:0 auto; height:45px; padding:3px; background:#e6e6e6; border:1px solid #999; border-radius:20px; box-shadow:0 1px 2px #777;}
+.minenumber, .gamesize {padding:6px 10px; width:120px;}
+.button {font-weight:bold; border:1px solid #999; border-radius:3px; text-shadow:0 1px 1px #fff; padding:6px 10px;
+	white-space:nowrap; vertical-align:middle; color:#333; cursor:pointer; background:#e0e0e0;
+	background:-webkit-linear-gradient(top,#fff,#e0e0e0);
+	background:-moz-linear-gradient(top,#fff,#e0e0e0);
+	background:-ms-linear-gradient(top,#fff,#e0e0e0);
+	background:-o-linear-gradient(top,#fff,#e0e0e0);
+	box-shadow:0 1px 2px rgba(0,0,0,0.25),inset 0 0 3px #fff;
+}
+.button:hover,.button:focus,.button:active {border:1px solid #aaa; border-bottom-color:#ccc; border-top-color:#999;
+	box-shadow:inset 0 1px 2px #aaa;
+	background:-webkit-linear-gradient(top,#e6e6e6,#dcdcdc);
+	background:-moz-linear-gradient(top,#e6e6e6,#dcdcdc);
+	background:-ms-linear-gradient(top,#e6e6e6,#dcdcdc);
+	background:-o-linear-gradient(top,#e6e6e6,#dcdcdc);
+}
+
+/* - - - - - OVERLAY AND MODAL DIALOG - - - - - */
+.overlay {position:absolute; z-index:5; background:#66b6fc; display:none; width:100%; height:100%; top:0; left:0;}
+.modal {width:300px; height:400px; padding:10px; margin:100px auto 0 auto; overflow:hidden; border:1px solid #000;
+	box-shadow:0 0 5px 2px #000; background:#e6e6e6; font:15px/18px Arial,serif; color:#333; text-align:left;}
+.modal p {text-indent:15px;}
+.modal p + p {margin-top:5px;}
+.modal .button {display:block; margin:15px auto 0 auto; width:125px;}
+.modal label {display:inline-block; height:40px; width:100px; text-align:right;}
+/* - - - - - GAMPEPLAY AREA :TABLE & CELLS - - - - - */
+.grid {border-collapse:collapse; empty-cells:show; margin:15px auto; box-shadow:0 0 5px 1px #333; display:none;}
+.grid td {width:24px; height:24px; border:1px inset #777;}
+.unknown {
+	cursor:pointer;
+	background-color:#aaa;
+	background-color:-moz-linear-gradient(-45deg,#aaa 0%,#eee 100%);
+	background-color:-webkit-gradient(linear,left top,right bottom,color-stop(0%,#aaa),color-stop(100%,#eee));
+	background-color:-webkit-linear-gradient(-45deg,#aaa 0%,#eee 100%);
+	background-color:-o-linear-gradient(-45deg,#aaa 0%,#eee 100%);
+	background-color:-ms-linear-gradient(-45deg,#aaa 0%,#eee 100%);
+	background-color:linear-gradient(-45deg,#aaa 0%,#eee 100%);
+
+}
+.empty,.mined,.flagged {
+	cursor:normal;
+	background-color:#eee;
+	background-color:-moz-linear-gradient(-45deg,#eee 0%,#fff 100%);
+	background-color:-webkit-gradient(linear,left top,right bottom,color-stop(0%,#eee),color-stop(100%,#fff));
+	background-color:-webkit-linear-gradient(-45deg,#eee 0%,#fff 100%);
+	background-color:-o-linear-gradient(-45deg,#eee 0%,#fff 100%);
+	background-color:-ms-linear-gradient(-45deg,#eee 0%,#,100%);
+	background-color:linear-gradient(-45deg,#eee 0%,#fff 100%);
+	box-shadow:inset 1px 1px 5px 1px #999;
+}
+.dirtycheater {border:1px solid #900!important; box-shadow:inset 0 0 3px #fff!important}
+.miss {background-color:#900!important;}
+
+/* - - - - - SPRITE ICONS - - - - - */
+.sprite {background-image:url(../img/icons.png); background-repeat:no-repeat; background-position:100px 100px;}
+.sprite.mined {background-position:0 0;}
+.sprite.flagged {background-position:0 -24px;}
+.sprite.one {background-position:0 -48px;}
+.sprite.two {background-position:0 -72px;}
+.sprite.three {background-position:0 -96px;}
+.sprite.four {background-position:0 -120px;}
+.sprite.five {background-position:0 -144px;}
+.sprite.six {background-position:0 -168px;}
+.sprite.seven {background-position:0 -192px;}
+.sprite.eight {background-position:0 -216px;}
+.sprite.bomb {background-position:0 0px;}
+.sprite.mouse {background-position:0 -240px;}
+.sprite.clock {background-position:0 -264px;}
+.sprite.smiley, .sprite.new, .sprite.saver,
+	.sprite.loader, .sprite.cheater, .sprite.helper {width:24px; height:24px; display:inline-block; vertical-align:middle;}
+.sprite.smiley {background-position:0 -288px;}
+.sprite.new {background-position:0 -312px;}
+.sprite.saver {background-position:0 -336px;}
+.sprite.loader {background-position:0 -360px;}
+.sprite.cheater {background-position:0 -384px;}
+.sprite.helper {background-position:0 -408px;}
+
+/* - - - - - STATS AREA - - - - - */
+.stats {width:180px; height:24px; padding:5px; border:2px solid #fff; border-radius:25px; box-shadow:0 0 5px 1px #333; margin:10px auto; display:none;}
+.stats .sprite {height:24px; width:50px; text-align:right; float:left; margin-right:10px;}
